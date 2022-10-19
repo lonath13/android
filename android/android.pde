@@ -9,28 +9,40 @@ void setup() {
   appHeight = height;
   //
   //Concatenation
-   println("\t\t\twidth=", width, "\theight=", height); //key variable
+  println("\t\t\twidth=", width, "\theight=", height); //key variable
   println("Display Monitor:", "\twidth="+displayWidth, "& height"+displayHeight );
   //
   //Ternary Opperator
   String ls="Landscape or square", p="Portrait", DO="Display Orientation", instruct="come-on turn your phone.";
   String orientation = ( appWidth>= appHeight) ? ls : p;
-  println (DO, orientation);
+  //println (DO, orientation);
+   if ( appWidth < appHeight ) { //Declare Landscape Mode
+    println(instruct);
+  } else {
+    //Fit CANVAS into Display Monitor
+    if ( appWidth > displayWidth ) appWidth = 0; //CANVAS-width will not fit
+    if ( appHeight > displayHeight ) appHeight = 0; //CANVAS-height will not fit
+    if ( appWidth != 0 && appHeight != 0 ) {
+      print("Display Geoemtry is Good to Go.");
+    } else {
+      println("STOP, is broken");
+    }
+  }
   //
   // If orentation is wrong ... feedback to change it
-  if( orientation==p ) println(instruct);
+  //if ( orientation==p ) println(instruct);
   //
   //Fit CANVAS in Display Monitor
-  if (appWidth > displayWidth) appWidth = 0; // CANVAS-width will no fit
-  if ( appHeight > displayHeight ) appHeight = 0; // CANVAS-height will no fit
-  if ( appWidth != 0 && appHeight != 0) print("Display Geometry is Good to Go.");
-  if (appWidth == 0 || appHeight == 0) println("STOP, is broken");
 } //End setup
 //
-void draw() {} //End draw
+void draw() {
+  ellipse(150, 20, 10, 30);
+} //End draw
 //
-void keyPressed() {} //End keyPressed
+void keyPressed() {
+} //End keyPressed
 //
-void mousePressed() {} //End mousePressed
+void mousePressed() {
+} //End mousePressed
 //
 // End Main Program
