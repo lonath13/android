@@ -37,6 +37,11 @@ void setup() {
 //
 void draw() {
   ellipse(150, 20, 10, 30);
+  arc(200, 200, 50, 50, 0, PI);
+  circle(50, 300, 80);
+  line(120, 80, 340, 300);
+  quad(30, 30, 100, 50, 60, 70, 80, 40);
+  triangle(300, 120, 232, 80, 344, 300);
 } //End draw
 //
 void keyPressed() {
