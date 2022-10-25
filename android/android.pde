@@ -1,5 +1,6 @@
 //Global Variables
 int appWidth, appHeight;
+float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
 //
 void setup() {
   //Declare Geometry: square, lanscape, portrait
@@ -29,6 +30,13 @@ void setup() {
     }
   }
   //
+  //Population
+  centerWidth= width * 1/2;
+  centerHeight = height *1/2;
+  xStart =  centerWidth - (width *1/4);
+  yStart = centerHeight - (height *1/4);
+  widthRect = width * 1/2;
+  heightRect = height * 1/2;
   // If orentation is wrong ... feedback to change it
   //if ( orientation==p ) println(instruct);
   //
@@ -36,12 +44,7 @@ void setup() {
 } //End setup
 //
 void draw() {
-  ellipse(150, 20, 10, 30);
-  arc(200, 200, 50, 50, 0, PI);
-  circle(50, 300, 80);
-  line(120, 80, 340, 300);
-  quad(30, 30, 100, 50, 60, 70, 80, 40);
-  triangle(300, 120, 232, 80, 344, 300);
+  rect(xStart, yStart, widthRect, heightRect);
 } //End draw
 //
 void keyPressed() {
