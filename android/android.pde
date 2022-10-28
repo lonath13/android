@@ -4,23 +4,24 @@ float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
 color black=#000000, white=#FFFFFF, purple=#8600FC, yellow=#F8FC00;
 color yellowNightMode=#860000, purpleNightMode=#9400FF ;
 float thick, thin;
+Boolean grayScale=false, randomColour=false, blackBackground=false, nightMode=false;
 //
 void setup() {
-  //Declare Geometry: square, lanscape, portrait
-  size(700, 400); //use size for debugging
-  //fullScreen();c//use full screen for easy dyployment
+  //Declare Display Geometry: square, landscape, portrait
+  size(700, 400); //Use size for debugging
+  //fullScreen(); //Use fullScreen for easy deployment
   appWidth = width;
   appHeight = height;
   //
   //Concatenation
-  println("\t\t\twidth=", width, "\theight=", height); //key variable
-  println("Display Monitor:", "\twidth="+displayWidth, "& height"+displayHeight );
+  println("\t\t\tWidth="+width, "\tHeight="+height); //key variables
+  println("Display Monitor:", "\twidth="+displayWidth, "& height="+displayHeight);
   //
-  //Ternary Opperator
-  String ls="Landscape or square", p="Portrait", DO="Display Orientation", instruct="come-on turn your phone.";
-  String orientation = ( appWidth>= appHeight) ? ls : p;
+  //Ternary Operator
+  String ls="Landscape or Square", p="portrait", DO="Display Orientation", instruct="Bru, turn your phun";
+  //String orientation = ( appWidth >= appHeight ) ? ls : p;
   //println (DO, orientation);
-   if ( appWidth < appHeight ) { //Declare Landscape Mode
+  if ( appWidth < appHeight ) { //Declare Landscape Mode
     println(instruct);
   } else {
     //Fit CANVAS into Display Monitor
@@ -33,35 +34,43 @@ void setup() {
     }
   }
   //
-  //Population
-  centerWidth= width * 1/2;
-  centerHeight = height *1/2;
-  xStart =  centerWidth - (width *1/4);
-  yStart = centerHeight - (height *1/4);
-  widthRect = width * 1/2;
-  heightRect = height * 1/2;
-  thick = appWidth *1/70;
-  thin = appWidth * 1/140;
-  // If orentation is wrong ... feedback to change it
+  //If ORIENTATION is wrong ... feedback to change it
   //if ( orientation==p ) println(instruct);
   //
-  //Fit CANVAS in Display Monitor
+  //Population
+  centerWidth = appWidth * 1/2;
+  centerHeight = appHeight * 1/2;
+  xStart = centerWidth - ( appWidth * 1/4 ) ;
+  yStart = centerHeight - ( appHeight * 1/4 ) ;;
+  widthRect = appWidth * 1/2;
+  heightRect = appHeight * 1/2;
+  thick = appWidth * 1/70;
+  thin =  appWidth * 1/140;
 } //End setup
 //
 void draw() {
-  background(225); //Grey Scale 0-255
+  if ( grayScale == true ) background(225); //Gray Scale 0-255
   //random(a, b)
-  background(color( random(255), random(255), random(255)) ); //color(r,g,b), , casting
-  //night mode
-  background(black);
+  if ( randomColour == true ) background( color( random(0, 255), random(255), random(255) ) ); //color(r,g,b), Casting 
+  //Night Mode
+  if ( blackBackground == true ) background(black);
   //
   strokeWeight(thick); //noStroke()
-  stroke(yellow); //yellowNightMode
-  fill(purple); //purpleNightMode
+  //Night Mode Decision
+  if ( nightMode == true )
+  {
+    stroke(yellowNightMode);
+    fill(purpleNightMode);
+  } else
+  {
+    stroke(yellow);
+    fill(purple);
+  }
   rect(xStart, yStart, widthRect, heightRect);
-  fill(white); // reset default
-  stroke(black);// reset default
-  strokeWeight(1);// reset default
+  // Reset default
+  fill(white);
+  stroke(black);
+  strokeWeight(1);
 } //End draw
 //
 void keyPressed() {
