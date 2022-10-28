@@ -2,7 +2,7 @@
 int appWidth, appHeight;
 float centerWidth, centerHeight, xStart, yStart, widthRect, heightRect;
 color black=#000000, white=#FFFFFF, purple=#8600FC, yellow=#F8FC00;
-color yellowNightMode=#860000, purpleNightMode= ;
+color yellowNightMode=#860000, purpleNightMode=#9400FF ;
 float thick, thin;
 //
 void setup() {
